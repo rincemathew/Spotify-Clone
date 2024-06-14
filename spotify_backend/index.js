@@ -5,9 +5,12 @@ const JwtStrategy = require('passport-jwt').Strategy,
     ExtractJwt = require('passport-jwt').ExtractJwt;
 const passport = require('passport');
 const User = require("./models/user");
+const authRoutes = require("./routes/auth")
 const port = 8000;
 
 require("dotenv").config()
+
+app.use(express.json());
 
 //mongoose connection
 mongoose.connect(process.env.MONGO_DB,{
@@ -20,7 +23,7 @@ mongoose.connect(process.env.MONGO_DB,{
 //passport jwt
 let opts = {}
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-opts.secretOrKey = 'secretkey';
+opts.secretOrKey = 'qazpc';
 // opts.issuer = 'accounts.examplesoft.com';
 // opts.audience = 'yoursite.net';
 passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
@@ -42,7 +45,7 @@ passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
 app.get("/",(req,res)=>{
     res.send("hello world");
 });
-
+app.use("/auth",authRoutes);
 
 app.listen(port,()=>{
     console.log("spotify runs on port "+ port);

@@ -13,12 +13,15 @@ router.post("/register",async (req,res) => {
         return res.status(403).json({error:"A user with this email already exists"})
     }
 
-    const hashedPassword = bcrypt.hash(password,10);
-    const newUserData = {email,password,firstName,lastName,userName}
+    const hashedPassword = await bcrypt.hash(password,10);
+    const newUserData = {email,password:hashedPassword,firstName,lastName,userName}
     const newUser = await User.create(newUserData);
     //creating token
-    const token = getToken(email,newUser);
+    const token = await getToken(email,newUser);
+    console.log('t'+token)
     const userToReturn = {...newUser.toJSON(),token};
     delete userToReturn.password;
     return res.status(200).json(userToReturn);
 });
+
+module.exports = router;
