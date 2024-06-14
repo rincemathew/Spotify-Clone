@@ -9,10 +9,8 @@ const port = 8000;
 
 require("dotenv").config()
 
-//mongoose
+//mongoose connection
 mongoose.connect(process.env.MONGO_DB,{
-    useNewUrlParser:true,
-    useUnifiedTopology:true
 }).then((x)=>{
     console.log("MongoDb connected.....")
 }).catch((error)=>{
@@ -20,7 +18,6 @@ mongoose.connect(process.env.MONGO_DB,{
 })
 
 //passport jwt
-
 let opts = {}
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 opts.secretOrKey = 'secretkey';
@@ -45,6 +42,7 @@ passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
 app.get("/",(req,res)=>{
     res.send("hello world");
 });
+
 
 app.listen(port,()=>{
     console.log("spotify runs on port "+ port);
