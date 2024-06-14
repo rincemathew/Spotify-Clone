@@ -6,6 +6,7 @@ const JwtStrategy = require('passport-jwt').Strategy,
 const passport = require('passport');
 const User = require("./models/user");
 const authRoutes = require("./routes/auth")
+const songRoutes = require("./routes/song")
 const port = 8000;
 
 require("dotenv").config()
@@ -46,6 +47,7 @@ app.get("/",(req,res)=>{
     res.send("hello world");
 });
 app.use("/auth",authRoutes);
+app.use("/song",songRoutes);
 
 app.listen(port,()=>{
     console.log("spotify runs on port "+ port);
