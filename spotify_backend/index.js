@@ -7,6 +7,7 @@ const passport = require('passport');
 const User = require("./models/user");
 const authRoutes = require("./routes/auth")
 const songRoutes = require("./routes/song")
+const playlistRoutes = require("./routes/playlist")
 const port = 8000;
 
 require("dotenv").config()
@@ -58,6 +59,7 @@ app.get("/",(req,res)=>{
 });
 app.use("/auth",authRoutes);
 app.use("/song",songRoutes);
+app.use("/playlist",playlistRoutes);
 
 app.listen(port,()=>{
     console.log("spotify runs on port "+ port);
