@@ -9,10 +9,12 @@ const authRoutes = require("./routes/auth")
 const songRoutes = require("./routes/song")
 const playlistRoutes = require("./routes/playlist")
 const port = 8000;
+const cors = require('cors');
 
 require("dotenv").config()
 
 app.use(express.json());
+app.use(cors())
 
 //mongoose connection
 mongoose.connect(process.env.MONGO_DB,{
