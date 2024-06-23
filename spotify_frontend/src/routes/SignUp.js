@@ -22,18 +22,17 @@ function SignUp() {
       alert("Email and confirm email fields must match. Please check again");
       return;
     }
-    const data = { email, password, username, firstName, lastName };
+    const data = { email, password, userName:username, firstName, lastName };
     const response = await makeUnauthenticatedPOSTRequest(
-      "/auth/register",
-      data
+      "/auth/register",data
     );
     if (response && !response.err) {
-      // const token = response.token;
-      // const date = new Date();
-      // date.setDate(date.getDate() + 30);
-      // setCookie("token", token, {path: "/", expires: date});
+      const token = response.token;
+      const date = new Date();
+      date.setDate(date.getDate() + 30);
+      setCookie("token", token, {path: "/", expires: date});
       alert("Success");
-      // navigate("/home");
+      navigate("/home");
     } else {
       alert("Failure");
     }
