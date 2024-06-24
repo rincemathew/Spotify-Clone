@@ -21,6 +21,7 @@ function UploadSong() {
             "/song/create",
             data
         );
+        console.log(response)
         if (response.err) {
             alert("Could not create song");
             return;
