@@ -19,7 +19,7 @@ router.post("/create",passport.authenticate("jwt",{session:false}),async(req,res
 
 //get published songs by me
 router.get("/get/mysongs", passport.authenticate("jwt", {session:false}), async(req,res)=>{
-    const songs = await Song.find({artist:req.user._id});
+    const songs = await Song.find({artist:req.user._id}).populate("artist");
     return res.status(200).json({data:songs});
 })
 
