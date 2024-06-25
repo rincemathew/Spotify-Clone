@@ -105,10 +105,8 @@ return (
             />
         )}
         <div className={`${currentSong ? "h-9/10" : "h-full"} w-full flex`}>
-            {/* This first div will be the left panel */}
             <div className="h-full w-1/5 bg-black flex flex-col justify-between pb-10">
                 <div>
-                    {/* This div is for logo */}
                     <div className="logoDiv p-6">
                         <img
                             src={spotify_logo}

@@ -11,6 +11,8 @@ import UploadSong from "./routes/UploadSong";
 import MyMusic from "./routes/MyMusic";
 import songContext from "./contexts/songContext";
 import SearchPage from "./routes/SearchPage";
+import Library from "./routes/Library";
+import SinglePlaylistView from "./routes/SinglePlaylistView";
 
 function App() {
   const [currentSong, setCurrentSong] = useState(null);
@@ -39,11 +41,11 @@ function App() {
             <Route path="/upload-song" element={<UploadSong />} />
             <Route path="/my-music" element={<MyMusic />} />
             <Route path="/search" element={<SearchPage />} />
-            {/* <Route path="/library" element={<Library />} /> */}
-            {/* <Route
+            <Route path="/library" element={<Library />} />
+            <Route
               path="/playlist/:playlistId"
               element={<SinglePlaylistView />}
-            /> */}
+            />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
           </songContext.Provider>
