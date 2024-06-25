@@ -10,6 +10,7 @@ import LoggedInHome from './routes/LoggedInHome';
 import UploadSong from "./routes/UploadSong";
 import MyMusic from "./routes/MyMusic";
 import songContext from "./contexts/songContext";
+import SearchPage from "./routes/SearchPage";
 
 function App() {
   const [currentSong, setCurrentSong] = useState(null);
@@ -35,15 +36,15 @@ function App() {
             {/* <Route path="/" element={<div>hello</div>} /> */}
             {/* <Route path="/home" element={<Home></Home>} /> */}
             <Route path="/" element={<LoggedInHome></LoggedInHome>} />
-            <Route path="/uploadSong" element={<UploadSong />} />
-            <Route path="/myMusic" element={<MyMusic />} />
-            {/* <Route path="/search" element={<SearchPage />} /> */}
+            <Route path="/upload-song" element={<UploadSong />} />
+            <Route path="/my-music" element={<MyMusic />} />
+            <Route path="/search" element={<SearchPage />} />
             {/* <Route path="/library" element={<Library />} /> */}
             {/* <Route
               path="/playlist/:playlistId"
               element={<SinglePlaylistView />}
             /> */}
-            <Route path="*" element={<Navigate to="/home" />} />
+            <Route path="*" element={<Navigate to="/" />} />
           </Routes>
           </songContext.Provider>
         ) : (

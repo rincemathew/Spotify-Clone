@@ -27,7 +27,7 @@ function UploadSong() {
             return;
         }
         alert("Success");
-        navigate("/home");
+        navigate("/");
     };
 
     return (

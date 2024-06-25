@@ -22,7 +22,7 @@ function Login() {
       date.setDate(date.getDate() + 30);
       setCookie("token", token, { path: "/", expires: date });
       alert("Success");
-      navigate("/home");
+      navigate("/");
     } else {
       alert("Failure");
     }

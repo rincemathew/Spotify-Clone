@@ -1,5 +1,6 @@
 import {useContext, useState, useLayoutEffect, useRef} from "react";
 import {Howl, Howler} from "howler";
+import { Link } from "react-router-dom";
 import {Icon} from "@iconify/react";
 import spotify_logo from "../assets/images/spotify_logo_white.svg";
 import IconText from "../components/shared/IconText";
@@ -139,7 +140,7 @@ return (
                                 "material-symbols:library-music-sharp"
                             }
                             displayText={"My Music"}
-                            targetLink="/myMusic"
+                            targetLink="/my-music"
                             active={curActiveScreen === "myMusic"}
                         />
                     </div>
@@ -177,7 +178,8 @@ return (
                             <div className="h-1/2 border-r border-white"></div>
                         </div>
                         <div className="w-1/3 flex justify-around h-full items-center">
-                            <TextNavbar displayText={"Upload Song"} />
+                            
+                            <Link to="/upload-song"><TextNavbar displayText={"Upload Song"} /></Link>
                             <div className="bg-white w-10 h-10 flex items-center justify-center rounded-full font-semibold cursor-pointer">
                                 AC
                             </div>
